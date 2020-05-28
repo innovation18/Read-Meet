@@ -3,3 +3,5 @@ env/
 auth/__pycache__/
 */__pychache/*
 *.pyc
+.env
+

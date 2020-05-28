@@ -1,7 +1,8 @@
 import os
+import dotenv
 from sqlalchemy import Column, String, Integer, create_engine, ForeignKey, ARRAY, Boolean
 from flask_sqlalchemy import SQLAlchemy
-
+import dotenv
 
 database_path = os.environ['DATABASE_URL']
 
@@ -10,6 +11,7 @@ db = SQLAlchemy()
 
 def setup_db(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = database_path
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
     # migrate = Migrate(app, db)
@@ -24,7 +26,6 @@ class Users(db.Model):
     city = Column(String(120))
     country = Column(String(100))
     legit = Column(Boolean)  # TODO legitimacy
-    test = Column(Boolean)  # test migration
     books = db.relationship('Books', backref='Users', lazy='dynamic')
     exchange = db.relationship('Exchange', backref='Users', lazy='dynamic')
 
@@ -52,9 +53,8 @@ class Users(db.Model):
         }
 
     def long(self):
-        print(self)
         return {
-            'id': self.user_id,
+            'user_id': self.user_id,
             'name': self.name,
             'zip_code': self.zip_code,
             'city': self.city,
