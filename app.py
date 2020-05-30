@@ -205,6 +205,9 @@ def create_app():
         requests = Exchange.query.filter(Exchange.status != 'approved'). \
             filter(Exchange.lender_id == user_id).all()
 
+        if not requests:
+            abort(make_response(jsonify('No requests for this user OR user does not exist')))
+
         for req in requests:
             req.status = 'approved'
             try:
@@ -217,8 +220,6 @@ def create_app():
                     "success": True,
                     "message": "Your requests are approved"
                 })
-
-
 
     @app.errorhandler(404)
     def unprocessable(error):
