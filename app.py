@@ -140,18 +140,18 @@ def create_app():
 
                 # TODO user legitimacy to be implemented
 
-    @app.route('/request', methods=['POST'])
+    @app.route('/request/<int:user_id>', methods=['POST'])
     @requires_auth('request:book')
-    def request_book(valid):
+    def request_book(valid, user_id):
         if valid:
             try:
                 new_request = request.get_json()
             except Exception as e:
                 abort(400, str(e))
 
-            if all(k in new_request for k in ('requester_id', 'lender_id', 'book_id')):
+            if all(k in new_request for k in ('lender_id', 'book_id')):
                 exchange = Exchange(
-                    requester_id=new_request['requester_id'],
+                    requester_id=user_id,
                     # TODO - requester_id later to be picked from db using session user name
                     lender_id=new_request['lender_id'],
                     book_id=new_request['book_id'],
