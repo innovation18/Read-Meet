@@ -212,11 +212,13 @@ def create_app():
             except Exception as e:
                 db.session.rollback()
                 abort(404, e)
+            finally:
+                return jsonify({
+                    "success": True,
+                    "message": "Your requests are approved"
+                })
 
-        return jsonify({
-            "success": True,
-            "message": "Your requests are approved"
-        })
+
 
     @app.errorhandler(404)
     def unprocessable(error):
