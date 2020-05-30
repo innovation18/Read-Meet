@@ -26,8 +26,8 @@ class Users(db.Model):
     city = Column(String(120))
     country = Column(String(100))
     legit = Column(Boolean)  # TODO legitimacy
-    books = db.relationship('Books', backref='Users', lazy='dynamic')
-    exchange = db.relationship('Exchange', backref='Users', lazy='dynamic')
+    books = db.relationship('Books', backref='Users', lazy='dynamic', cascade="all, delete-orphan")
+    exchange = db.relationship('Exchange', backref='Users', lazy='dynamic', cascade="all, delete-orphan")
 
     def __init__(self, name, city, country, zip_code):
         self.name = name
@@ -70,7 +70,7 @@ class Books(db.Model):
     author = Column(String(120))
     available = Column(Boolean)
     created_by = Column(Integer, ForeignKey('users.user_id'))
-    exchange = db.relationship('Exchange', backref='Books', lazy='dynamic')
+    exchange = db.relationship('Exchange', backref='Books', lazy='dynamic', cascade="all, delete-orphan")
 
     def __init__(self, title, author, created_by):
         self.title = title
@@ -92,9 +92,10 @@ class Books(db.Model):
 
     def details(self):
         return {
-            'id': self.book_id,
+            'book_id': self.book_id,
             'title': self.title,
-            'author': self.author
+            'author': self.author,
+            'user_id': self.created_by
         }
 
 
@@ -108,8 +109,8 @@ class Exchange(db.Model):
     status = Column(String, nullable=False)
 
     def __init__(self, requester_id, lender_id, book_id, status):
-        self.lender_id = lender_id
         self.requester_id = requester_id
+        self.lender_id = lender_id
         self.book_id = book_id
         self.status = status
 
