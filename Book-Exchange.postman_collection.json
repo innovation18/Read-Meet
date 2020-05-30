@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "92540182-f8c2-4979-9076-9db45464a1b1",
+		"name": "Book-Exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get-Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Name\",\n\t\"zip_code\":\"1111\",\n\t\"city\":\"Delhi\",\n\t\"country\":\"India\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Deletion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVkMDM1NWVkZWE0MzEwYzcwMjkzMGFiIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA4NTMzOTUsImV4cCI6MTU5MDkyNTM5NSwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTp1c2VyIl19.tWBR5xhVidUbSnzy4MXFHEZsIAicyKkVU5ZX7CCtUerrF2OtiAvfU-XR8Cs88-7vHsSvy0c2QFC8fWakvCIGJ0gEab8LUzCwBLqpRwSWPcu494dDbVbnxixhl3Hrc3bX4mrp0wNeb2gJ3dd0cFv0xmEXjjkXDHasc6pjKZ0Ky-rGEgd6-WA9cqLjSbjIpTrqz7hM2dMKdWBEaPfgAbmpyAyny0pZJj0F9GzAl8YksPrfd0Lz09ssV5CTYgYflD-jfNsq1O1mYZ9tLGHFyhyfs5E7SyF2I59QVFYi5n6YxTCpmqswp_hPJOiqpZ3dbsunOoPhfOV6mG8JtnVjTb_g8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/user/12",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjYmUxYjhhMzAyMjgwY2QzMTRkYmIxIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA4NTg3MzksImV4cCI6MTU5MDkzMDczOSwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImFkZDpib29rIl19.KpapdiCkGLiEDdh3Jp4HMDtu-t_sOZu7unLA3c9DDxtcP2UHyIY6Rc-RmQdD5c3mE1WaR9GkWbvnCn27r9kalpDlcKYEcJJun4E_INtYCc2X-YXsAydWn2xSpyUusotSf3ijmPNxwDmoqeffSgnHL_NkwN5I4KRHAUVWXWZvKd0tf2q_O9Zty-iuCrWqzkY3QFrRjp7A-BCs-U6bLzZm6s5LnZr2CUm6y6grSgdSEloEvpeeWEdMO2jya787wPGfJdQwd8jziODfBVKEvNgQucip6kIoUVvKPS2gZSK5rRB79l0KcbbkLuSQ0BvJ4i5OdZ-Q03uuXkJFL2Zekb5mkA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/books",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjYmUxYjhhMzAyMjgwY2QzMTRkYmIxIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA4NTg3MzksImV4cCI6MTU5MDkzMDczOSwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImFkZDpib29rIl19.KpapdiCkGLiEDdh3Jp4HMDtu-t_sOZu7unLA3c9DDxtcP2UHyIY6Rc-RmQdD5c3mE1WaR9GkWbvnCn27r9kalpDlcKYEcJJun4E_INtYCc2X-YXsAydWn2xSpyUusotSf3ijmPNxwDmoqeffSgnHL_NkwN5I4KRHAUVWXWZvKd0tf2q_O9Zty-iuCrWqzkY3QFrRjp7A-BCs-U6bLzZm6s5LnZr2CUm6y6grSgdSEloEvpeeWEdMO2jya787wPGfJdQwd8jziODfBVKEvNgQucip6kIoUVvKPS2gZSK5rRB79l0KcbbkLuSQ0BvJ4i5OdZ-Q03uuXkJFL2Zekb5mkA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"Ikigai\",\n\t\"author\":\"Hector Gracia\",\n\t\"user_id\":3\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/books",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pending requests for a given user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/requests/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"requests",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request a book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjYmUxYjhhMzAyMjgwY2QzMTRkYmIxIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA4NjIxMDQsImV4cCI6MTU5MDkzNDEwNCwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImFkZDpib29rIiwicmVxdWVzdDpib29rIl19.NQmjz6f8vrZne0T5Ur8Op7sjjKdfMxjRLVJBhmOR4oE3pzPzTccins3SjW8yYrJop-oPAg88AlXWZBIvpjvIBcL_DNp8MTsHRhbk5lFmxsaIH2Gn_Dqu7hp0BPCxRLSrFgwWgmYVWLamdpEGB9ke54tq3FBmJL9V9sE97sZBreYegI7hgyE8K_BRtW4HZmX8XGeyK0jmxRxplr8ayIDyDcacL12MFOP-6vLGFF5LBxQ2URJZxi3jVWE8KkD4nerhVNjPqmDK3vV93Sv5Xe7bSABR23-s9pGRGoOJgVXpxk1reI0KDHFg7X95QurvIZzYNoGorigeOBxfRFL9HIPSpw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"requester_id\":4,\n\t\"lender_id\":3,\n\t\"book_id\":13\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/request",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user request for books",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/requests/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"requests",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
