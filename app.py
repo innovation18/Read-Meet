@@ -213,16 +213,17 @@ def create_app():
 
         for req in requests:
             req.status = 'approved'
-            try:
-                Exchange.update(req)
-            except Exception as e:
-                db.session.rollback()
-                abort(404, e)
-            finally:
-                return jsonify({
-                    "success": True,
-                    "message": "Your requests are approved"
-                })
+
+        try:
+            Exchange.update(req)
+        except Exception as e:
+            db.session.rollback()
+            abort(404, e)
+
+        return jsonify({
+            "success": True,
+            "message": "Your requests are approved"
+        })
 
     @app.errorhandler(404)
     def unprocessable(error):
