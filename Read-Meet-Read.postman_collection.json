@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "a52c47cb-d683-4972-9305-cf52607a30ed",
+		"name": "Read-Meet_Read",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Guest User",
+			"item": [
+				{
+					"name": "Get-Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/users",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Udacity User\",\n\t\"zip_code\":10101010,\n\t\"city\":\"Full Stack\",\n\t\"country\":\"Udacity\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/user",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user request for books",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/requests/1",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"requests",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "User Deletion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVkMDM1NWVkZWE0MzEwYzcwMjkzMGFiIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA5MjYyNjYsImV4cCI6MTU5MDk5ODI2NiwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTp1c2VyIl19.MK118zkpVokpzgcsCb44smXkV4tcefo3mfiy0nsLCcqtl_knf94XYiztLi1zrp0rlIVE8InrnzJkPRi20Foc6c8H3cd-EhQ-xY6gSWq0Sudtjmz71r17t1A1odWKaXQgRZ0tpSYxBBOaAlxI1OaaSB8dd0oJD9_iPSNQmkoBdWjGBvTr3qJX8b5q54vIPYEw1eUIXWhFX3uZPE4UMZu8Xv-Y4Qvi2SRPgNZu6MQnfXFU6g4EfpyGBC4IdSkMN11nZjhOFRDYR7tsvdH5H1JuBENjdGtBKdha6P7QMMj_JJI7EWgAcWDjCiaKiOqNBnae7gcl6SRs47zC7di0r9QQ0Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/user/4",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reader",
+			"item": [
+				{
+					"name": "Get Books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjYmUxYjhhMzAyMjgwY2QzMTRkYmIxIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA4NTg3MzksImV4cCI6MTU5MDkzMDczOSwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImFkZDpib29rIl19.KpapdiCkGLiEDdh3Jp4HMDtu-t_sOZu7unLA3c9DDxtcP2UHyIY6Rc-RmQdD5c3mE1WaR9GkWbvnCn27r9kalpDlcKYEcJJun4E_INtYCc2X-YXsAydWn2xSpyUusotSf3ijmPNxwDmoqeffSgnHL_NkwN5I4KRHAUVWXWZvKd0tf2q_O9Zty-iuCrWqzkY3QFrRjp7A-BCs-U6bLzZm6s5LnZr2CUm6y6grSgdSEloEvpeeWEdMO2jya787wPGfJdQwd8jziODfBVKEvNgQucip6kIoUVvKPS2gZSK5rRB79l0KcbbkLuSQ0BvJ4i5OdZ-Q03uuXkJFL2Zekb5mkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/books",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjYmUxYjhhMzAyMjgwY2QzMTRkYmIxIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA5MjYwMTQsImV4cCI6MTU5MDk5ODAxNCwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImFkZDpib29rIiwicmVxdWVzdDpib29rIl19.jBSBIxjJNPIg9YJPd3dSOTSBSYWIiODsq8YAvBfqLRF2V40fjuKT3BNRngIr7_QbgY-cgic5XXqilwKaF9HR4tD6e9SrVxViHxM7NBkszzklP1Kw-T4TiJ4MlmFQNQIGq07TmsGu9rtHwtWCXQkNvuZx62iOiqxvk9H6ZG0Vc__S0Sw3jUMNuVEbapsvfHkdCTYQSx-H-JzZ3s7xiU1I0APcPKcYgKbZsy-B5ip076Gz-e6g2z_ncyUqXxTfcHVPK2tQegeV3-yD_QhlnST84wvnMq4npudWUGVwZwszVSqjdAdVifZW4NVI0Rp0aE-a-5BpEPAr5q6iHW17w3P7oQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Mountains Echoed\",\n\t\"author\":\"Khaled Hosseni\",\n\t\"user_id\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/books",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pending requests for a given user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/requests/1",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"requests",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "request a book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZzR0NFQkN3V2YydHZPbm5NbFpoQyJ9.eyJpc3MiOiJodHRwczovL2ZsYXNrLWFwaS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjYmUxYjhhMzAyMjgwY2QzMTRkYmIxIiwiYXVkIjoiaHR0cHM6Ly9yZWFkLW1lZXQtZXhjaGFuZ2UuaGVyb2t1YXBwLmNvbS8iLCJpYXQiOjE1OTA4NjIxMDQsImV4cCI6MTU5MDkzNDEwNCwiYXpwIjoiTWw3ZTNNS2JoTTZBSlc3OXNoZjJGdW9xT3hVSXpjdG8iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImFkZDpib29rIiwicmVxdWVzdDpib29rIl19.NQmjz6f8vrZne0T5Ur8Op7sjjKdfMxjRLVJBhmOR4oE3pzPzTccins3SjW8yYrJop-oPAg88AlXWZBIvpjvIBcL_DNp8MTsHRhbk5lFmxsaIH2Gn_Dqu7hp0BPCxRLSrFgwWgmYVWLamdpEGB9ke54tq3FBmJL9V9sE97sZBreYegI7hgyE8K_BRtW4HZmX8XGeyK0jmxRxplr8ayIDyDcacL12MFOP-6vLGFF5LBxQ2URJZxi3jVWE8KkD4nerhVNjPqmDK3vV93Sv5Xe7bSABR23-s9pGRGoOJgVXpxk1reI0KDHFg7X95QurvIZzYNoGorigeOBxfRFL9HIPSpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"lender_id\":1,\n\t\"book_id\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://read-meet-read.herokuapp.com/request/2",
+							"protocol": "http",
+							"host": [
+								"read-meet-read",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "efafc3f1-cecb-4fd3-9e55-f3d1f51d5d99",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "abacbadd-58a7-4f7a-a4f7-444717776fa6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
