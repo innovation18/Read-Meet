@@ -56,7 +56,7 @@ class ReadMeetReadTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
 
     def test_delete_user(self):
-        res = self.client().delete('/user/13',  # TODO specify existing user id in URL to make test return OK
+        res = self.client().delete('/user/1',  # TODO specify existing user id in URL to make test return OK
                                    headers=self.headers_admin)
         data = json.loads(res.data)
         self.assertEqual(data['success'], True)
@@ -101,11 +101,11 @@ class ReadMeetReadTestCase(unittest.TestCase):
 
     def test_post_request(self):
         res = self.client().post(
-            '/request/5',   # TODO specify existing user id in URL to make test return OK
+            '/request/2',   # TODO specify existing user id in URL to make test return OK
             headers=self.headers_reader,
             json={
-                "lender_id": 3,     # TODO specify book owner id for below book id
-                "book_id": 13       # TODO specify book id
+                "lender_id": 1,     # TODO specify book owner id for below book id
+                "book_id": 1       # TODO specify book id
             })
         data = json.loads(res.data)
         self.assertEqual(data['success'], True)
