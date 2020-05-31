@@ -147,6 +147,7 @@ def create_app():
                 abort(400, str(e))
 
             if all(k in new_request for k in ('lender_id', 'book_id')):
+
                 exchange = Exchange(
                     requester_id=user_id,
                     # TODO - requester_id later to be picked from db using session user name
@@ -157,6 +158,8 @@ def create_app():
 
                 try:
                     exchange.insert()
+                except sqlalchemy.exc.IntegrityError as e:
+                    abort(make_response(jsonify({'message': 'provided user or book does not exist'})))
                 except Exception as e:
                     abort(404, str(e))
 
