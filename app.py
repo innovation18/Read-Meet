@@ -10,10 +10,6 @@ def create_app():
     app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
     setup_db(app)
 
-    class AppError(Exception):
-        def __init__(self, error):
-            self.error = error
-
     @app.route("/users", methods=['GET'])
     def get_users():
 
@@ -102,6 +98,7 @@ def create_app():
                     )))
 
                 return jsonify({
+                    'success': True,
                     'books': [Books.details(book) for book in books]
                 })
 
@@ -122,7 +119,7 @@ def create_app():
                     try:
                         book.insert()
                     except sqlalchemy.exc.IntegrityError as e:
-                        abort(make_response(jsonify('provided user does not exist')))
+                        abort(make_response(jsonify({'message': 'provided user does not exist'})))
                     except Exception as e:
                         db.session.rollback()
                         abort(404, e)
@@ -171,6 +168,7 @@ def create_app():
                 return jsonify(result)
             else:
                 abort(make_response(jsonify({
+                    'success': False,
                     'message': 'You seem to have missed some data: Provide '
                                'requester_id(user_id of the requester), lender_id(book owner:user_id), '
                 })))
@@ -197,6 +195,7 @@ def create_app():
             })
         else:
             return jsonify({
+                "success": True,
                 "requests": list(map(Exchange.requests, data))
             })
 
@@ -206,7 +205,8 @@ def create_app():
             filter(Exchange.lender_id == user_id).all()
 
         if not requests:
-            abort(make_response(jsonify('No requests for this user OR user does not exist')))
+            abort(make_response(jsonify({'message': 'No requests for this user OR user does not exist',
+                                         'success': False})))
 
         for req in requests:
             req.status = 'approved'
