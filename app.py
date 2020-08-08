@@ -34,7 +34,7 @@ def create_app():
             abort(make_response(jsonify({
                 'message': 'Incorrect data'
             })))
-
+        #todo ----
         if all(k in new_user for k in ('name', 'city', 'zip_code', 'country')):
             users = Users(
                 name=new_user['name'],
@@ -89,6 +89,7 @@ def create_app():
     @requires_auth('add:book')
     def create_book(valid):
         if valid:
+            #todo ----
             if request.method == 'GET':
                 books = Books.query.all()
 
@@ -145,7 +146,7 @@ def create_app():
                 new_request = request.get_json()
             except Exception as e:
                 abort(400, str(e))
-
+            #todo ----
             if all(k in new_request for k in ('lender_id', 'book_id')):
 
                 exchange = Exchange(
